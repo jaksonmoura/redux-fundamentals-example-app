@@ -1,6 +1,6 @@
-import React from 'react'
-import TodoList from './features/todos/TodoList'
-
+import React from 'react';
+import TodoList from './features/todos/TodoList';
+import Filters from './features/filters/Filters';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
       </section>
 
       <TodoList/>
-
+      <Filters/>
     </div>
   )
 }

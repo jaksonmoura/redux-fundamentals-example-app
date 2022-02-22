@@ -5,10 +5,8 @@ export const StatusFilter = {
 }
 
 const initialState = {
-  filters: {
-    status: StatusFilter.All,
-    colors: [],
-  }
+  status: StatusFilter.All,
+  colors: [],
 }
 
 const filtersReducer = (state = initialState, action) => {  
@@ -18,6 +16,20 @@ const filtersReducer = (state = initialState, action) => {
         ...state.filters,
         status: action.payload
       }
+    }
+    case 'filters/colorsFilterToggled': {
+        if (state.colors.includes(action.payload))
+        {
+          return {
+            ...state,
+            colors: state.colors.filter(color => color !== action.payload)
+          }
+        }
+
+        return {
+          ...state,
+          colors: state.colors.concat(action.payload)
+        }
     }
 
     default:
