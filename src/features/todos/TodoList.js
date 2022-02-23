@@ -3,21 +3,23 @@ import { useSelector } from 'react-redux'
 import AddNewTodo from './AddNewTodo'
 import TodoItem from './TodoItem'
 
-const TodoList = () => {
-  const { todos, filters } = useSelector((state) => state)
 
-  const itemsToRender = () => {
-    let itemsFiltered = todos.filter(todo =>  {
-      if (filters.colors.includes(todo.colors)){
-        return todo
-      }
-      return {}
-    })
-    console.log(itemsFiltered)
-    itemsFiltered.map((todo) => {
+const TodoList = () => {
+  const {todos, filters} = useSelector(state => state);
+  console.log(todos);
+  console.log(filters);
+
+  const itemsToRender = todos.map(todo =>{
+    console.log(filters.colors.includes(todo.color))
+    if (filters.colors.length > 0) {
+      if (filters.colors.includes(todo.color)){
+        return <TodoItem key={todo.id} todo={todo} />
+      } 
+      return []
+    } else {
       return <TodoItem key={todo.id} todo={todo} />
-    })
-  }
+    }
+  })
 
   return (
     <>
